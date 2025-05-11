@@ -38,210 +38,191 @@ HAVING condition;
 
 **Question 1**
 --
-How many medical records are there for each patient?
+-- ![image](https://github.com/user-attachments/assets/c8b25e49-bc19-4b1b-9591-268a569d836e)
 
-Sample table:MedicalRecords Table
-
-![WhatsApp Image 2025-04-30 at 17 19 36_e70b9cad](https://github.com/user-attachments/assets/ec0fd5a1-dd21-49c7-ade0-a2625451b6b2)
 
 ```sql
-SELECT PatientID, COUNT(*) AS TotalRecords
-FROM MedicalRecords
-GROUP BY PatientID;
+-- select
+SUBSTR(Email, INSTR(Email,'@')+1) AS EmailDomain,
+COUNT(*) AS TotalPatients
+FROM
+Patients
+GROUP BY
+EmailDomain;
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 20 22_96fdeab4](https://github.com/user-attachments/assets/784d625c-a5c7-4717-a84a-645cdb209777)
+![image](https://github.com/user-attachments/assets/f443e432-9d9d-47b0-8441-feb589288b9e)
 
 
 **Question 2**
 ---
-How many patients are covered by each insurance company?
-
-Sample table:Insurance Table
-
-![WhatsApp Image 2025-04-30 at 17 21 15_f88dd299](https://github.com/user-attachments/assets/b66c0bc6-d8b4-4fbe-a98f-58114b02510c)
+-- ![image](https://github.com/user-attachments/assets/4b6f967d-90ad-4da8-a2ea-6384df795a48)
 
 
 ```sql
-SELECT InsuranceCompany,COUNT(*) AS TotalPatients
-FROM Insurance
-GROUP BY InsuranceCompany;
+-- 
+SELECT 
+  DATE(AppointmentDateTime) AS AppointmentDate, 
+  COUNT(AppointmentID) AS TotalAppointments
+FROM 
+  Appointments
+GROUP BY 
+  DATE(AppointmentDateTime);
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 22 16_b475f09a](https://github.com/user-attachments/assets/8f231084-e886-4724-88d1-4ea6874582ec)
+![image](https://github.com/user-attachments/assets/f668ee0f-3b91-45ed-bd06-5881055f39fc)
 
 
 **Question 3**
 ---
-What is the average dosage prescribed for each medication?
-
-Sample tablePrescriptions Table
-
-![WhatsApp Image 2025-04-30 at 17 23 07_30249397](https://github.com/user-attachments/assets/b0ba78c7-0fcc-4c22-8f2e-5114675f835b)
+-- ![image](https://github.com/user-attachments/assets/f65eddb0-360a-458e-a652-e2474e4392ac)
 
 
 ```sql
-SELECT Medication,AVG(Dosage) AS AvgDosage
-FROM Prescriptions
-GROUP BY Medication;
+-- select
+Specialty,
+COUNT(*) AS TotalDoctors
+FROM
+Doctors
+GROUP BY
+Specialty;
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 24 02_ef80b554](https://github.com/user-attachments/assets/10664ba9-2e8e-41e2-a17c-cf2def9ba213)
+![image](https://github.com/user-attachments/assets/6879aacd-9e97-457e-ae2c-6910867eb8d9)
 
 
 **Question 4**
 ---
-Write a SQL query to find the maximum purchase amount.
-
-Sample table: orders
-
-![WhatsApp Image 2025-04-30 at 17 25 26_c23bff49](https://github.com/user-attachments/assets/2c157a9b-b4eb-41b4-ae41-da1c82ede4c4)
-
+-- ![image](https://github.com/user-attachments/assets/de0f197e-0eae-4689-a998-d444b6099ce8)
 
 ```sql
-SELECT MAX(purch_amt) AS MAXIMUM
-FROM orders
-LIMIT 1;
+-- select
+COUNT(*) AS employees_count
+FROM
+employee
+WHERE
+income>50000;
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 26 03_f16e6766](https://github.com/user-attachments/assets/a0e6a254-523a-4123-bf91-5dc7453f3c78)
+![image](https://github.com/user-attachments/assets/ee75ed8f-5aba-4367-a52f-b46bd5447c05)
 
 
 **Question 5**
 ---
-Write a SQL query to find the average salary of all employees?
-
-Table: employee
-
-![WhatsApp Image 2025-04-30 at 17 26 40_bced677d](https://github.com/user-attachments/assets/a380c1a7-d5eb-4e37-8816-8c3b76ad34ed)
-
+-- ![image](https://github.com/user-attachments/assets/0adcb46a-4cd1-46c8-bbd8-ef4ffb0fd329)
 
 ```sql
-SELECT avg(income) AS Average_Salary
-FROM employee
-LIMIT 1;
+-- SELECT
+SUM(inventory) AS total
+FROM
+fruits
+WHERE
+unit = 'LB';
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 27 15_4223c386](https://github.com/user-attachments/assets/f573d42d-9f5b-4b2e-bdfa-60dde86ef42a)
-
+![image](https://github.com/user-attachments/assets/4ee4dd32-25d4-4223-8750-152d75ee423a)
 
 **Question 6**
 ---
-Write a SQL query to determine the number of customers who received at least one grade for their activity.
-
-Sample table: customer
-
-![WhatsApp Image 2025-04-30 at 17 27 52_f4fc64cc](https://github.com/user-attachments/assets/3a53e42d-0bb0-4252-b270-b34608f32cd0)
-
+-- ![image](https://github.com/user-attachments/assets/269d0a7a-d805-451d-8bc1-c5a857af3154)
 
 ```sql
-SELECT COUNT(*) AS COUNT
-FROM customer;
+-- SELECT
+sum(income) AS total_income
+FROM
+employee
+WHERE
+age>=40;
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/8acdce76-8897-4863-b544-77287ef88fb5)
-
+![image](https://github.com/user-attachments/assets/0007df8d-08b7-4f2a-b3d8-d7c83541a805)
 
 **Question 7**
 ---
-Write a SQL query to find the total income of employees aged 40 or above.
+-- ![image](https://github.com/user-attachments/assets/ab50d0f9-c1d3-4b9c-997f-6c293730958e)
 
-Table: employee
-
-![WhatsApp Image 2025-04-30 at 17 28 55_9a879401](https://github.com/user-attachments/assets/e21eea7b-b178-41a9-ab3b-74616c4b5024)
 
 ```sql
-SELECT SUM(income) as total_income
-FROM employee
-WHERE age >= 40
-LIMIT 1;
+-- SELECT
+AVG(income) AS avg_income
+FROM
+employee
+WHERE
+name LIKE 'A%';
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/20665487-3132-4153-81cf-5dd1c912330a)
+![image](https://github.com/user-attachments/assets/afb11255-7a16-459d-aead-0cd84dfe0fd4)
+
 
 **Question 8**
 ---
-Write the SQL query that achieves the grouping of data by occupation, calculates the minimum work hours for each occupation, and excludes occupations where the minimum work hour is not greater than 8.
+-- ![image](https://github.com/user-attachments/assets/fc1e292f-123b-483a-b04c-6e0f60cdfef5)
 
-Sample table: employee1
-
-![WhatsApp Image 2025-04-30 at 17 29 59_7a8a48e3](https://github.com/user-attachments/assets/e385412c-2b91-460c-8210-af973f2ecb35)
 
 ```sql
-SELECT occupation,MIN(workhour)
-FROM employee1
-GROUP BY occupation
-HAVING MIN(workhour) > 8
-ORDER BY occupation;
+-- SELECT category_id, product_name, Price as Price
+FROM products
+WHERE (category_id, Price) IN (
+    SELECT category_id, MAX(Price)
+    FROM products
+    GROUP BY category_id
+    HAVING MAX(Price) > 15
+);
+
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 30 34_8d89ecfb](https://github.com/user-attachments/assets/43a8b861-911b-4597-8a8b-9d6b9291fd36)
-
+![image](https://github.com/user-attachments/assets/07286eb0-0cce-46ed-a5cc-fe5cc1c46c9a)
 
 **Question 9**
 ---
-Write the SQL query that performs grouping by age groups and displays the maximum salary for each group, excluding groups where the maximum salary is not greater than 8000.
+-- ![image](https://github.com/user-attachments/assets/8eb580b6-703a-4c15-8a4c-6cfef6d5d7ea)
 
-Note: Calculate the age group as multiples of 5.
-
-Eg., 20,22,23 comes in age group 20.
-
-25,27,29 comes in age group 25.
-
-Sample table: customer1
-
-![WhatsApp Image 2025-04-30 at 17 31 14_440e80de](https://github.com/user-attachments/assets/d46fde79-2f27-4de8-b77a-1f4f3ddfe0d6)
 
 ```sql
-SELECT (age-(age % 5)) as age_group,MAX(salary)
-FROM customer1
-GROUP BY age_group
-HAVING MAX(salary) > 8000
-ORDER BY age_group;
+-- 
+SELECT age, MIN(income) 
+FROM employee 
+GROUP BY age 
+HAVING MIN(income) < 400000;
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 31 52_7c6db1ab](https://github.com/user-attachments/assets/9ff4ff95-3ee8-40f0-a64d-d8e904aef346)
-
+![image](https://github.com/user-attachments/assets/313a8d26-22af-4aca-8ba4-3a3641fcec80)
 
 **Question 10**
 ---
-Write the SQL query that accomplishes the grouping of data by age intervals using the expression (age/5)5, calculates the minimum age for each group, and excludes groups where the minimum age is not less than 25.
-
-Sample table: customer1
-
-![WhatsApp Image 2025-04-30 at 17 32 28_756e6d65](https://github.com/user-attachments/assets/d437f589-edef-4f46-a772-e91f7a597f78)
-
+-- ![image](https://github.com/user-attachments/assets/69f73a71-c4d4-451a-91d7-bdadb42d8311)
 
 ```sql
-SELECT (age/5)*5 AS age_group,MIN(age)
-FROM customer1
-GROUP BY age_group
-HAVING MIN(age) < 25;
+-- 
+SELECT category_id, count(product_name)
+FROM products
+GROUP BY category_id
+HAVING category_id < 3;
 
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 33 00_ca57c61f](https://github.com/user-attachments/assets/72ed4a68-722e-4364-b1cd-7753ca080464)
-
+![image](https://github.com/user-attachments/assets/aa449b18-dfe3-403b-9f4e-7d34e5fc88fd)
 
 ## RESULT
 Thus, the SQL queries to implement aggregate functions, GROUP BY, and HAVING clause have been executed successfully.
+
