@@ -54,215 +54,210 @@ ON table1.column = table2.column;
 
 **Question 1**
 --
-From the following tables write a SQL query to find the details of an order. Return ord_no, ord_date, purch_amt, Customer Name, grade, Salesman, commission.
+-- ![image](https://github.com/user-attachments/assets/000080f9-cd11-4234-a57b-a86f87e32228)
 
 
 ```sql
-SELECT 
-    o.ord_no,
-    o.ord_date,
-    o.purch_amt,
-    c.cust_name AS "Customer Name",
-    c.grade,
-    s.name AS "Salesman",
-    s.commission
-FROM 
-    orders o
-INNER JOIN 
-    customer c ON o.customer_id = c.customer_id
-INNER JOIN 
-    salesman s ON o.salesman_id = s.salesman_id;
+-- 
+
+SELECT p.first_name AS patient_name, d.first_name AS doctor_name
+FROM patients p
+JOIN doctors d
+ON p.doctor_id = d.doctor_id
+WHERE p.date_of_birth > '1990-01-01';
 
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/aa9b89d8-64fa-4693-811a-d57f6b94829f)
+![image](https://github.com/user-attachments/assets/ff0dfc55-5880-4c54-87e7-28e4e7ea5a64)
+
 
 **Question 2**
 ---
-From the following tables write a SQL query to find salespeople who received commissions of more than 12 percent from the company. Return Customer Name, customer city, Salesman, commission.
-
-Sample table: customer
-
-
+-- 
+![image](https://github.com/user-attachments/assets/09ab4a1d-b257-4b33-9484-5009abed3f0f)
 
 ```sql
-select c.cust_name as "Customer Name", c.city, s.name as "Salesman" , s.commission
-from customer c
-inner join salesman s
-on c.salesman_id = s.salesman_id
-where s.commission > 0.12;
+--
+
+SELECT o.ord_no, o.ord_date, o.purch_amt, 
+       c.cust_name AS "Customer Name", c.grade, 
+       s.name AS Salesman, s.commission
+FROM orders o
+JOIN customer c ON o.customer_id = c.customer_id
+JOIN salesman s ON o.salesman_id = s.salesman_id;
+
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 18 05 36_9200de15](https://github.com/user-attachments/assets/902bd9a3-317d-42fb-a4cb-aaa4d6b6e93a)
+![image](https://github.com/user-attachments/assets/df86b7e0-f557-426a-8e70-cf77bed5d5b9)
 
 
 **Question 3**
 ---
-write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
+-- ![image](https://github.com/user-attachments/assets/63c47968-1927-48b7-bbef-97edbc9176b2)
 
-Sample table: salesman
 
 ```sql
-select s.name as Salesman, c.cust_name, s.city
-from salesman s
-inner join customer c
-on c.city = s.city;
+--
+
+SELECT p.*
+FROM patients p
+JOIN test_results t
+ON p.patient_id = t.patient_id
+WHERE t.test_name IN ('Blood Test', 'Blood Pressure')
+AND t.result NOT LIKE '%Normal%';
+
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 18 08 13_08241303](https://github.com/user-attachments/assets/e814026c-beaf-4182-84f2-1d2a5e4dd159)
+![image](https://github.com/user-attachments/assets/a3863076-2546-4d37-b510-a1f19dc321d1)
+
 
 **Question 4**
 ---
-Write the SQL query that achieves the selection of the first name from the "patients" table (aliased as "patient_name") and the test name from the "test_results" table (aliased as "t"), with an inner join on the "patient_id" column.
-
-![WhatsApp Image 2025-04-30 at 18 09 05_4252aab6](https://github.com/user-attachments/assets/2ddd2a2e-70e0-4c9c-b8f3-64692446fe29)
+-- 
+![image](https://github.com/user-attachments/assets/e1072c90-f6a7-481c-be4f-dd80d59ea4f5)
 
 
 ```sql
-select p.first_name as patient_name, t.test_name
-from PATIENTS p
-inner join test_results t
-on p.patient_id = t.patient_id;
+--
+
+SELECT c.cust_name AS "Customer Name", c.city, s.name AS Salesman, s.commission
+FROM customer c
+JOIN salesman s
+ON c.salesman_id = s.salesman_id
+WHERE s.commission > 0.12;
 
 ```
+
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 18 10 12_ee448b70](https://github.com/user-attachments/assets/50b6e2ce-0fd4-4b2c-ae7c-cce84df16fad)
-
+![image](https://github.com/user-attachments/assets/effbf57a-35fa-4698-949b-46fee40c9971)
 
 **Question 5**
 ---
-Write the SQL query that achieves the selection of the "name" column from the "salesman" table (aliased as "s"), the "cust_name," "city," "grade," and "salesman_id" columns from the "customer" table (aliased as "c"), with a left join on the "salesman_id" column and a condition filtering for customers with a grade less than or equal to 100.
-
-![WhatsApp Image 2025-04-30 at 18 10 57_ab8d29aa](https://github.com/user-attachments/assets/082bb09b-07ce-4f82-a3ab-5beeab940c63)
+-- 
+![image](https://github.com/user-attachments/assets/204a7910-7e9c-438c-99c5-931b17568f8f)
 
 
 ```sql
-select s.name, c.cust_name , c.city, c.grade, c.salesman_id
-from customer c
-left join salesman s
-on c.salesman_id = s.salesman_id
-where c.grade <= 100;
+--
+
+SELECT c.cust_name, o.ord_no, o.ord_date, o.purch_amt
+FROM customer c
+LEFT JOIN orders o
+ON c.customer_id = o.customer_id
+WHERE o.purch_amt > 1000;
+
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/41650755-f327-4de5-8fa2-f39fcb585e2d)
+![image](https://github.com/user-attachments/assets/dddaf9bf-b767-4972-b810-4ba06271519f)
+
 
 **Question 6**
 ---
-Write the SQL query that achieves the selection of all columns from the "patients" table and the specialization from the "doctors" table (aliased as "doctor_specialization"), with an inner join on the "doctor_id" column.
-
-PATIENTS TABLE:
-
-![WhatsApp Image 2025-04-30 at 18 11 54_94dc534c](https://github.com/user-attachments/assets/2760b35b-e0b5-4cbf-9003-503114d6abc2)
-
+-- ![image](https://github.com/user-attachments/assets/a1b7011f-7c14-41c0-b089-510afaca0794)
 
 ```sql
-select p.*, d.specialization as doctor_specialization
-from patients p
-inner join doctors d
-on p.doctor_id = d.doctor_id;
+-- 
+
+
+SELECT c.cust_name, c.city, o.ord_no, o.ord_date, o.purch_amt AS "Order Amount"
+FROM customer c
+LEFT JOIN orders o
+ON c.customer_id = o.customer_id
+ORDER BY o.ord_date ASC;
+
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 18 12 46_70f276a4](https://github.com/user-attachments/assets/435f866c-9f9f-4efb-9f73-ee2dfc8edce4)
+![image](https://github.com/user-attachments/assets/6feab0ac-fbb0-4502-8488-9124c55fe06c)
 
 **Question 7**
 ---
-Write the SQL query that achieves the selection of the "cust_name" column from the "customer" table (aliased as "c"), and the "ord_no," "ord_date," and "purch_amt" columns from the "orders" table (aliased as "o"), with a left join on the "customer_id" column and a condition filtering for orders with a purchase amount greater than 1000.
-
-![WhatsApp Image 2025-04-30 at 18 13 56_779ea92e](https://github.com/user-attachments/assets/e9aec8d9-e82a-49a3-bfef-2cfef9be6f0f)
-
+-- 
+![image](https://github.com/user-attachments/assets/d138cafb-0ff3-4afc-a5fb-c91032700ef7)
 
 ```sql
-select c.cust_name,o.ord_no,o.ord_date,o.purch_amt
-from customer c
-left join orders o
-on c.customer_id = o.customer_id
-where o.purch_amt >1000;
+--
+
+SELECT p.first_name AS patient_name, d.first_name AS doctor_name
+FROM patients p
+JOIN doctors d
+ON p.doctor_id = d.doctor_id
+WHERE p.discharge_date IS NULL;
+
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 18 15 19_cdabefe9](https://github.com/user-attachments/assets/579d2c86-4799-44ad-9530-e2aa92f5c5c3)
-
+![image](https://github.com/user-attachments/assets/69ff3fe1-d127-4030-ae80-dfab76208aa2)
 
 **Question 8**
 ---
-SQL statement to generate a report with customer name, city, order number, order date, order amount, salesperson name, and commission to determine if any of the existing customers have not placed orders or if they have placed orders through their salesman or by themselves.
+-- 
+![image](https://github.com/user-attachments/assets/a85aa5f1-ad80-4ae4-9527-e7ffe2a65f8d)
+
 
 ```sql
-SELECT 
-    c.cust_name,
-    c.city,
-    o.ord_no,
-    o.ord_date,
-    o.purch_amt AS "Order Amount",
-    s.name,
-    s.commission
-FROM 
-    customer c
-LEFT JOIN 
-    orders o ON c.customer_id = o.customer_id
-LEFT JOIN 
-    salesman s ON o.salesman_id = s.salesman_id;
+--
 
+SELECT c.cust_name AS "Customer Name", c.city, s.name AS Salesman, s.commission
+FROM customer c
+JOIN salesman s
+ON c.salesman_id = s.salesman_id;
 
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 18 15 19_cdabefe9](https://github.com/user-attachments/assets/17beebb5-0cfb-4cc9-bff8-2d934cd9e87f)
-
+![image](https://github.com/user-attachments/assets/f87bef97-95f1-4ff3-a308-5d7ada681f54)
 
 **Question 9**
 ---
-Write the SQL query that achieves the selection of the first name from the "patients" table (aliased as "patient_name"), with an inner join on the "patient_id" column and a condition filtering for test results with the test name 'Blood Pressure'.
-
-![WhatsApp Image 2025-04-30 at 18 17 19_265d5167](https://github.com/user-attachments/assets/6a36f7cf-789e-4c1f-9a3c-a30fcf2aaeea)
+-- 
+![image](https://github.com/user-attachments/assets/3949ac6f-0ea7-475e-8509-ddff96ac3b98)
 
 
 ```sql
-select p.first_name as patient_name 
-from patients p
-inner join test_results t
-on p.patient_id = t.patient_id
-where t.test_name = 'Blood Pressure';
+--
+
+SELECT s.name
+FROM salesman s
+JOIN customer c
+ON s.salesman_id = c.salesman_id
+WHERE c.city = 'New York';
 
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 18 18 01_e607ca73](https://github.com/user-attachments/assets/697416d8-73e5-4c01-84e2-7012381d7fb5)
-
+![image](https://github.com/user-attachments/assets/926f0492-3514-4fc1-85fe-adcc164c1c80)
 
 **Question 10**
 ---
-From the following tables write a SQL query to find those customers with a grade less than 300. Return cust_name, customer city, grade, Salesman, salesmancity. The result should be ordered by ascending customer_id.
-
-![WhatsApp Image 2025-04-30 at 18 19 26_8b0b4ca9](https://github.com/user-attachments/assets/5b9b8498-36ae-4f15-92f1-e56d860ffade)
-
+-- ![image](https://github.com/user-attachments/assets/7f4ccd80-80d8-46ea-a7ea-52122d41f0a4)
 
 ```sql
-select c.cust_name, c.city, c.grade, s.name as Salesman, s.city
-from customer c
-inner join salesman s
-on c.salesman_id = s.salesman_id
-where c.grade<300
-order by customer_id asc;
+--
+
+SELECT c.cust_name, c.city, c.grade, s.name AS Salesman, s.city
+FROM customer c
+JOIN salesman s
+ON c.salesman_id = s.salesman_id
+ORDER BY c.customer_id ASC;
+
 ```
 
 **Output:**
-
-![WhatsApp Image 2025-04-30 at 18 20 25_41114f63](https://github.com/user-attachments/assets/a6f9ff70-6bf5-4a0f-b218-b9da3601e7d0)
+![image](https://github.com/user-attachments/assets/23a2842f-2197-4bcf-a759-0828c9b9e447)
 
 ## RESULT
 Thus, the SQL queries to implement different types of joins have been executed successfully.
