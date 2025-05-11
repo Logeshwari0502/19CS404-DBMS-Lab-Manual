@@ -47,164 +47,135 @@ SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
 --
-Write a SQL statement to Update the address to '58 Lakeview, Magnolia' where supplier ID is 5 in the suppliers table.
-![WhatsApp Image 2025-04-30 at 16 52 34_4490838f](https://github.com/user-attachments/assets/aba62e27-cadf-4058-8681-c421e1684a45)
+-- ![image](https://github.com/user-attachments/assets/24b299e3-f43b-4617-92d1-ba95e561dcac)
+
 
 ```sql
-UPDATE suppliers
-SET address = '58 Lakeview, Magnolia'
-WHERE supplier_id = 5;
+-- UPDATE products SET reorder_lvl=reorder_lvl*0.7 WHERE product_name LIKE "%cream%" AND quantity>reorder_lvl;
 ```
 
 **Output:**
-![WhatsApp Image 2025-04-30 at 16 53 25_ff350b3c](https://github.com/user-attachments/assets/86ffbb58-f16e-47e9-a161-1f335c3f03a5)
+
+![image](https://github.com/user-attachments/assets/94ccce41-f7ce-4d3d-b586-8eec348d5471)
+
 
 **Question 2**
 ---
-Write a SQL query to Retrieve the department name and location concatenated with a comma.
-
-![WhatsApp Image 2025-04-30 at 16 54 29_bf2fa6a6](https://github.com/user-attachments/assets/328b7ccd-31d9-4623-a9d1-7d49c85e7f49)
+-- ![image](https://github.com/user-attachments/assets/be8d4773-d20f-4cf1-bbfa-9e46b00efbd6)
 
 ```sql
-SELECT dname || ', ' || loc AS dept_location
-FROM dept;
+-- UPDATE customer SET grade=5 WHERE city="Chennai";
 ```
 
 **Output:**
-![WhatsApp Image 2025-04-30 at 16 55 12_7bd2417a](https://github.com/user-attachments/assets/a0a0142c-f74e-43b2-87ee-ee911bbaa27f)
+
+![image](https://github.com/user-attachments/assets/477d05a9-fa26-45a6-8f99-064d1c15576b)
+
 
 **Question 3**
 ---
-Write a SQL query to find the exact date that is 100 days after each employee's hire date.
+-- ![image](https://github.com/user-attachments/assets/e9ed7aac-1e98-4ac3-9488-51c4d1f495fb)
 
-![WhatsApp Image 2025-04-30 at 16 57 01_8e76dc27](https://github.com/user-attachments/assets/02ee4a98-f413-476d-abba-40777107b491)
 
 ```sql
-SELECT ename,hiredate,DATE(JULIANDAY(hiredate)+100) AS DateAfter100Days
-FROM emp;
+-- UPDATE employees SET email="Unavailable";
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 16 57 52_d9333b9c](https://github.com/user-attachments/assets/7d37c9cf-8f1c-4aa2-bf22-4c70f63b0a04)
+![image](https://github.com/user-attachments/assets/fef0c609-251a-40f3-8892-7810f4bf4e6a)
 
 **Question 4**
 ---
-Write a SQL query to calculate the number of days between the hiredate and a specified date ('2024-12-31') for each employee using the JULIANDAY function from the emp table.
+-- ![image](https://github.com/user-attachments/assets/943f7cc1-d5f1-4724-a798-7fe37a52599c)
 
-![WhatsApp Image 2025-04-30 at 16 58 34_615527a0](https://github.com/user-attachments/assets/9823743b-55fc-46e3-ac45-cdf07d0eefbb)
 
 ```sql
-SELECT ename,hiredate,JULIANDAY('2024-12-31') - JULIANDAY(hiredate) AS days_worked
-FROM emp;
+-- UPDATE products SET sell_price=sell_price*1.15 WHERE quantity<50 AND supplier_id=10;![Uploading image.png…]()
+
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 01 42_e6d9e2dd](https://github.com/user-attachments/assets/ee6206d2-1cd9-44b8-bcd9-78bade14ab6a)
+![image](https://github.com/user-attachments/assets/089efe1e-5575-4427-9bc7-8a88ffa666e4)
 
 
 **Question 5**
 ---
-Write a SQL query to calculate the discounted price for products where the discount percentage is greater than 0, and order the results by discounted_price in ascending order. Return product_id, original_price, discount_percentage, and discounted_price.
-
-![WhatsApp Image 2025-04-30 at 17 02 22_abf131ea](https://github.com/user-attachments/assets/7a167e18-ce5a-4f82-b6d0-bf04f72d8298)
+-- ![image](https://github.com/user-attachments/assets/cefecbf1-b9bd-435a-84a1-268ad169deae)
 
 ```sql
-SELECT product_id , original_price ,discount_percentage , (original_price *(1-Discount_percentage)) AS discounted_price
-FROM Products
-WHERE discount_percentage > 0 
-ORDER BY discounted_price ASC;
+-- UPDATE sales SET total_sell_price=quantity*sell_price WHERE product_id=10;
+
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 03 06_b12dd3e2](https://github.com/user-attachments/assets/96b80ee9-611f-4ac1-b95c-cd26c09c5a56)
+![image](https://github.com/user-attachments/assets/fa43075c-2b04-45f8-820b-36d2030a26b3)
 
 
 **Question 6**
 ---
-Write a SQL query to round the decimal column to 3 decimal places from the Calculations table.
-
-![WhatsApp Image 2025-04-30 at 17 03 50_95745ed2](https://github.com/user-attachments/assets/dca89c6a-ef02-4ecf-837c-c81ea6273de5)
+-- ![image](https://github.com/user-attachments/assets/dbd057b7-589d-425c-8bfb-3923a0d45f9b)
 
 ```sql
-SELECT id,ROUND(decimal,3) AS rounded_value
-FROM Calculations;
-
+-- DELETE FROM customer WHERE GRADE>=2;
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/471e1e67-80a2-47a1-ba41-2ec22fe3fc04)
+![image](https://github.com/user-attachments/assets/6b1c746a-8edc-460b-9644-59ba09bd0a94)
 
 **Question 7**
 ---
-Write a SQL query to categorize decimal as 'High', 'Medium', or 'Low' based on whether it is greater than 100, between 50 and 100, or less than 50 in the Calculations table.
-
-![WhatsApp Image 2025-04-30 at 17 04 57_d888c830](https://github.com/user-attachments/assets/0d3c428b-6bfb-4cc4-9ffa-874ecef99fa8)
+-- ![image](https://github.com/user-attachments/assets/a57d91fd-bc9a-4c89-ba3f-aabfa17a963f)
 
 ```sql
-SELECT id, decimal,
-CASE
-WHEN decimal > 100 THEN 'High'
-WHEN decimal BETWEEN 50 AND 100 THEN 'Medium'
-ELSE 'Low'
-END AS category
-FROM Calculations;
+-- DELETE FROM customer WHERE cust_country="India" AND cust_city!="Chennai";
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 05 41_54873db1](https://github.com/user-attachments/assets/da6b81d7-07c4-41e0-a87e-f747840f2f8c)
-
+![image](https://github.com/user-attachments/assets/7cc8214e-0dc4-4f0b-900c-3f8f1407af5b)
 
 **Question 8**
 ---
-Write a SQL query to Select all patients who were admitted for one day.
+-- ![image](https://github.com/user-attachments/assets/a60de25f-7d27-4fe8-94ff-0be81f20be54)
 
-Table: Patients
-![WhatsApp Image 2025-04-30 at 17 06 29_6ebfda5d](https://github.com/user-attachments/assets/b22d8d41-ee05-4696-a66f-1c51a77886e1)
 
 ```sql
-SELECT patient_id , first_name , admission_date , discharge_date
-FROM Patients
-WHERE admission_date = discharge_date ;
+-- DELETE FROM customer WHERE cust_city!="New York" AND outstanding_amt>5000;
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 07 17_f4cbe546](https://github.com/user-attachments/assets/979c18c4-92d2-49b8-a4b5-dd2413afed0e)
+![image](https://github.com/user-attachments/assets/0c76b9f9-3831-4cba-bde7-08b38a75f663)
 
 
 **Question 9**
 ---
-Show the categoryName and description from the categories table sorted by categoryName.
-
-![WhatsApp Image 2025-04-30 at 17 08 31_7fd9f42b](https://github.com/user-attachments/assets/aa72a0c3-1184-4e18-9afe-67dc1e413b02)
+--![image](https://github.com/user-attachments/assets/2a410e25-012d-4541-b54e-cc4a63abf3ac)
 
 ```sql
-SELECT CategoryName , Description
-FROM categories
-ORDER BY categoryName ASC;
+-- DELETE FROM Customer WHERE cust_country="UK" AND working_area="London" AND grade<3;
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 09 13_6a09cbb0](https://github.com/user-attachments/assets/34ff532d-0fdc-46cd-b535-6b64bbb10bc4)
+![image](https://github.com/user-attachments/assets/5f38d196-fe4e-426b-847c-cd8dfffb0c66)
 
 **Question 10**
 ---
-Write a SQL query to Delete customers from 'customer' table where 'GRADE' is not equal to 3.
+-- ![image](https://github.com/user-attachments/assets/3aee313a-43c9-441a-9378-9c9c8a48ad4f)
+
 
 ```sql
-DELETE FROM Customer
-WHERE grade <> 3;
+-- delete from customer where grade%2!=0;
 ```
 
 **Output:**
 
-![WhatsApp Image 2025-04-30 at 17 12 44_01ed126b](https://github.com/user-attachments/assets/1c182e0f-0fd7-4294-b9fd-986b5d58e51d)
+![image](https://github.com/user-attachments/assets/8e72c9f9-794a-4c55-9378-0a02231e3b37)
 
 ## RESULT
 Thus, the SQL queries to implement DML commands have been executed successfully.
